@@ -2,33 +2,6 @@
 include 'blog_ctrl.php';
 if (!isset($_GET['act'])) {
 ?>
-    <?php if (isset($_GET['pesan'])) { ?>
-        <?php if ($_GET['pesan'] == "berhasil") { ?>
-            <div class="alert alert-primary" role="alert">
-                Berhasil Menambahkan Data
-            </div>
-        <?php } elseif ($_GET['pesan'] == "gagal") { ?>
-            <div class="alert alert-danger" role="alert">
-                Gagal Menambahkan Data
-            </div>
-        <?php } elseif ($_GET['pesan'] == "ekstensi") { ?>
-            <div class="alert alert-warning" role="alert">
-                Ekstensi File Harus JPG
-            </div>
-        <?php } elseif ($_GET['pesan'] == "size") { ?>
-            <div class="alert alert-warning" role="alert">
-                Size File Tidak Boleh Lebih Dari 5 MB
-            </div>
-        <?php } elseif ($_GET['pesan'] == "gagaledit") { ?>
-            <div class="alert alert-danger" role="alert">
-                Gagal Edit Data
-            </div>
-        <?php } elseif ($_GET['pesan'] == "berhasiledit") { ?>
-            <div class="alert alert-primary" role="alert">
-                Berhasil Edit Data
-            </div>
-        <?php } ?>
-    <?php } ?>
     <div class="container pt-1">
         <a href="?modul=mod_blog&act=add" class="btn btn-primary mb-2">Tambah Data</a>
         <table class="table">
@@ -39,7 +12,6 @@ if (!isset($_GET['act'])) {
                 <th>Isi</th>
                 <th>Author</th>
                 <th>Date Input</th>
-                <th>Image</th>
                 <th>Action</th>
             </tr>
             <?php
@@ -56,7 +28,6 @@ if (!isset($_GET['act'])) {
                         <td><?= $d['isi'] ?></td>
                         <td><?= $d['author'] ?></td>
                         <td><?= $d['date_input'] ?></td>
-                        <td><img src="../assets/img/<?= $d['img_upload']; ?>" width="50px"></td>
                         <td>
                             <a href="?modul=mod_blog&act=edit&id=<?= $d["id_blog"]; ?>" class="btn btn-xs btn-primary"><i class="bi bi-pencil-square"></i> Edit</a>
                             <a href="?modul=mod_blog&act=delete&id=<?= $d["id_blog"]; ?>" class="btn btn-xs btn-danger"><i class="bi bi-trash"></i> Delete</a>
@@ -74,7 +45,7 @@ if (!isset($_GET['act'])) {
             <h3 class="mb-4"><?= $judul; ?></h3>
             <div class="row">
                 <div class="col">
-                    <form action="mod_blog/blog_ctrl.php?modul=mod_blog&act=save" method="POST" enctype="multipart/form-data">
+                    <form action="mod_blog/blog_ctrl.php?modul=mod_blog&act=save" method="POST">
                         <div class="mb-3 row">
                             <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                             <div class="col-sm-6">
@@ -101,19 +72,13 @@ if (!isset($_GET['act'])) {
                         <div class="mb-3 row">
                             <label for="isi" class="col-sm-2 col-form-label">Isi</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" id="mytextarea" cols="30" rows="10" name="isi"></textarea>
+                                <textarea class="form-control" id="isi" name="isi"></textarea>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="date_input" class="col-sm-2 col-form-label">Date Input</label>
                             <div class="col-sm-6">
                                 <input type="date" class="form-control" id="date_input" name="date_input">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="img" class="col-sm-2 col-form-label">Image</label>
-                            <div class="col-sm-6">
-                                <input type="file" class="form-control" id="img_upload" name="img_upload">
                             </div>
                         </div>
                         <div class="row">
@@ -138,7 +103,7 @@ if (!isset($_GET['act'])) {
                 <h3 class="mb-4"><?= $judul1; ?></h3>
                 <div class="row">
                     <div class="col">
-                        <form action="mod_blog/blog_ctrl.php?modul=mod_blog&act=update" method="POST" enctype="multipart/form-data">
+                        <form action="mod_blog/blog_ctrl.php?modul=mod_blog&act=update" method="POST">
                             <div class="mb-3 row">
                                 <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                                 <div class="col-sm-6">
@@ -169,7 +134,7 @@ if (!isset($_GET['act'])) {
                             <div class="mb-3 row">
                                 <label for="isi" class="col-sm-2 col-form-label">Isi</label>
                                 <div class="col-sm-6">
-                                    <textarea type="text" class="form-control" id="mytextarea" name="isi"><?= $q['isi']; ?></textarea>
+                                    <textarea type="text" class="form-control" id="isi" name="isi"><?= $q['isi']; ?></textarea>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -196,18 +161,6 @@ if (!isset($_GET['act'])) {
                                 <label for="date_input" class="col-sm-2 col-form-label">Date Input</label>
                                 <div class="col-sm-6">
                                     <input type="date" class="form-control" id="date_input" name="date_input" value="<?= $q['date_input']; ?>">
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="img_upload" class="col-sm-2 col-form-label">Image</label>
-                                <div class="col-sm-6">
-                                    <?php
-                                    if ($q['img_upload'] == "") { ?>
-                                        <img src="https://www.btklsby.go.id/images/placeholder/basic.png" style="width:150px;height:150px;">
-                                    <?php } else { ?>
-                                        <img src="../assets/img/<?php echo $q['img_upload']; ?>" style="width:150px" class="pb-3">
-                                    <?php } ?>
-                                    <input type="file" class="form-control" id="img_upload" name="img_upload">
                                 </div>
                             </div>
                             <div class="row">

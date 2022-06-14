@@ -13,12 +13,6 @@ security_login();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <script src="https://cdn.tiny.cloud/1/xywnp2d1cge48t2v9vbspvspibk3t6i99v1szvi5481j0mvu/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
-    </script>
     <title>Home</title>
 </head>
 

@@ -12,10 +12,3 @@ function security_login()
         return "";
     }
 }
-function pesan($alert)
-{
-    echo '<script language="javascript">';
-    echo 'alert("' . $alert . '")';  //not showing an alert box.
-    echo '</script>';
-    return header("Location: ../home.php?modul=mod_blog");
-}

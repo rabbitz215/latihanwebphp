@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2022 at 06:47 AM
+-- Generation Time: May 30, 2022 at 04:37 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -33,38 +33,17 @@ CREATE TABLE `mst_blog` (
   `id_kategori` int(11) NOT NULL,
   `isi` text NOT NULL,
   `author` varchar(50) NOT NULL,
-  `date_input` date NOT NULL,
-  `img_upload` varchar(100) NOT NULL
+  `date_input` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `mst_blog`
 --
 
-INSERT INTO `mst_blog` (`id_blog`, `judul`, `id_kategori`, `isi`, `author`, `date_input`, `img_upload`) VALUES
-(1, 'Test Blog 1', 1, '<div>\r\n<div><strong>Lorem ipsum</strong> dolor sit, amet consectetur adipisicing elit. Aspernatur natus magnam maiores nam nostrum soluta dolores quas iste, iusto, et beatae eum, rem amet! Nihil quasi eaque ipsum eveniet iusto natus itaque a quisquam non, distinctio repellendus! Autem, nisi consequatur natus velit accusamus veritatis esse expedita eos debitis culpa, enim voluptatem maiores corporis architecto optio odit sit blanditiis quibusdam ad. Minus pariatur, consectetur labore fugit aspernatur iusto laudantium vero atque corporis voluptatibus quaerat rem ipsam maiores voluptas eius sapiente molestiae.</div>\r\n</div>', 'rabbitz', '2022-06-08', 'dwdwdasgrge.jpg'),
-(2, 'Test Blog 2', 2, '<div>\r\n<div><em><strong>Lorem ipsum</strong></em> dolor sit, amet consectetur adipisicing elit. Aspernatur natus magnam maiores nam nostrum soluta dolores quas iste, iusto, et beatae eum, rem amet! Nihil quasi eaque ipsum eveniet iusto natus itaque a quisquam non, distinctio repellendus! Autem, nisi consequatur natus velit accusamus veritatis esse expedita eos debitis culpa, enim voluptatem maiores corporis architecto optio odit sit blanditiis quibusdam ad. Minus pariatur, consectetur labore fugit aspernatur iusto laudantium vero atque corporis voluptatibus quaerat rem ipsam maiores voluptas eius sapiente molestiae.</div>\r\n</div>', 'rabbitz', '2022-06-23', 'Ezt5WlJUYAMGcfF.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mst_dataresponden`
---
-
-CREATE TABLE `mst_dataresponden` (
-  `id` int(11) NOT NULL,
-  `email` varchar(75) NOT NULL,
-  `nama` varchar(75) NOT NULL,
-  `informasi` varchar(50) NOT NULL,
-  `keterangan` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `mst_dataresponden`
---
-
-INSERT INTO `mst_dataresponden` (`id`, `email`, `nama`, `informasi`, `keterangan`) VALUES
-(1, 'test123@gmail.com', 'Galang Putra', 'Penawaran Kerja', 'Lorem');
+INSERT INTO `mst_blog` (`id_blog`, `judul`, `id_kategori`, `isi`, `author`, `date_input`) VALUES
+(1, 'Testing', 1, 'qwerty', 'galang215', '2022-05-02'),
+(2, 'Testing2', 2, 'qwertyasd', 'rabbitz', '2022-05-14'),
+(3, 'Testing2', 1, 'asdasd', 'galang20', '2022-05-06');
 
 -- --------------------------------------------------------
 
@@ -105,12 +84,11 @@ CREATE TABLE `mst_menu` (
 
 INSERT INTO `mst_menu` (`id_menu`, `nm_menu`, `link`, `isactive`) VALUES
 (1, 'Dashboard', '', '1'),
+(2, 'Blog', 'mod_blog', '1'),
 (3, 'Berita', 'mod_berita', '0'),
 (4, 'Setting menu', 'mod_menu', '1'),
 (12, 'Kategori', 'mod_kategori', '1'),
-(13, 'Blog', 'mod_blog', '1'),
-(14, 'Upload', 'mod_upload', '1'),
-(15, 'Data Responden', 'mod_dataresponden', '1');
+(13, 'Blog', 'mod_blog', '1');
 
 -- --------------------------------------------------------
 
@@ -146,12 +124,6 @@ ALTER TABLE `mst_blog`
   ADD KEY `fk_kategori` (`id_kategori`);
 
 --
--- Indexes for table `mst_dataresponden`
---
-ALTER TABLE `mst_dataresponden`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `mst_kategoriblog`
 --
 ALTER TABLE `mst_kategoriblog`
@@ -177,13 +149,7 @@ ALTER TABLE `mst_userlogin`
 -- AUTO_INCREMENT for table `mst_blog`
 --
 ALTER TABLE `mst_blog`
-  MODIFY `id_blog` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `mst_dataresponden`
---
-ALTER TABLE `mst_dataresponden`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_blog` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mst_kategoriblog`
@@ -195,7 +161,7 @@ ALTER TABLE `mst_kategoriblog`
 -- AUTO_INCREMENT for table `mst_menu`
 --
 ALTER TABLE `mst_menu`
-  MODIFY `id_menu` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_menu` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `mst_userlogin`

@@ -68,7 +68,7 @@ require_once("config/config.php");
         <div class="container-fluid justify-content-center align-items-center d-flex flex-row pb-1">
             <h2 class="text-dark pt-3 ffam pe-3 hello">Hello... <br><span style="font-weight: bold;">Welcome To My
                     Blog!!</span></h2>
-            <img src="assets/imgold/head.jpg" width="25%" alt="" class="rounded-circle mt-5 border border-2 border-secondary">
+            <img src="assets/img/head.jpg" width="25%" alt="" class="rounded-circle mt-5 border border-2 border-secondary">
         </div>
 
     </header>
@@ -130,7 +130,7 @@ require_once("config/config.php");
             <div class="row">
                 <div class="col-md-3">
                     <div class="card" style="width: 15rem;">
-                        <img src="assets/imgold/php.png" class="card-img-top" alt="">
+                        <img src="assets/img/php.png" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title text-center">PHP</h5>
                         </div>
@@ -138,7 +138,7 @@ require_once("config/config.php");
                 </div>
                 <div class="col-md-3">
                     <div class="card" style="width: 15rem;">
-                        <img src="assets/imgold/c1.png" height="240px" class="card-img-top" alt="">
+                        <img src="assets/img/c1.png" height="240px" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title text-center">C++</h5>
                         </div>
@@ -146,7 +146,7 @@ require_once("config/config.php");
                 </div>
                 <div class="col-md-3">
                     <div class="card" style="width: 15rem;">
-                        <img src="assets/imgold/py.png" class="card-img-top" alt="">
+                        <img src="assets/img/py.png" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title text-center">Python</h5>
                         </div>
@@ -154,7 +154,7 @@ require_once("config/config.php");
                 </div>
                 <div class="col-md-3">
                     <div class="card" style="width: 15rem;">
-                        <img src="assets/imgold/js.png" class="card-img-top" alt="">
+                        <img src="assets/img/js.png" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title text-center">JavaScript</h5>
                         </div>
@@ -167,41 +167,36 @@ require_once("config/config.php");
         <div class="container-fluid d-flex flex-column align-items-center p-4">
             <h1 class="text-primary text-opacity-100 pb-3">=== My Blog ===</h1>
             <?php
-            function custom_echo($x, $length)
-            {
-                if (strlen($x) <= $length) {
-                    echo $x;
-                } else {
-                    $y = substr($x, 0, $length) . '...';
-                    echo $y;
-                }
-            }
             $data = mysqli_query($koneksi, "SELECT * FROM mst_blog");
             foreach ($data as $d) :
+                $id_kat = $d['id_kategori'];
+                $kat = mysqli_query($koneksi, "SELECT nm_kategori FROM mst_kategoriblog WHERE id_kategori=$id_kat");
+                foreach ($kat as $kat2) :
             ?>
-                <div class="row mb-4">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2">
-                        <img src="assets/img/<?= $d['img_upload']; ?>" width="200" class="mb-3 img-thumbnail" />
-                    </div>
-                    <div class="col-md-6">
-                        <h4><?= $d['judul'] ?></h4>
-                        <div>
-                            <span class="badge bg-info text-white rounded-3 fs-6"><?= $d['date_input'] ?></span>
-                            <span class="text-primary fs-6">Created By : <?= $d['author'] ?></span>
+                    <div class="row mb-4">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2">
+                            <img src="assets/images/gambar1.jpg" width="270" class="img-fluid img-thumbnail" />
                         </div>
-                        <p>
-                            <?php echo substr($d['isi'], 0, 200) . ((strlen($d['isi']) > 200) ? '...' : ''); ?>
-                            [ <a href="detailblog.php?id=<?= $d["id_blog"]; ?>">Baca Selengkapnya</a> ]
-                        </p>
-                        <hr />
+                        <div class="col-md-6">
+                            <h4><?= $d['judul'] ?></h4>
+                            <div>
+                                <span class="badge bg-info text-white rounded-3 fs-6"><?= $d['date_input'] ?></span>
+                                <span class="text-primary fs-6">Created By : <?= $d['author'] ?></span>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Soluta ea id quasi pariatur provident! Dolorum quas iste tenetur numquam eum itaque aut facilis,
+                                corrupti id sint quidem obcaecati distinctio officia? [ <a href="detailblog1.html">Baca Selengkapnya</a> ]
+                            </p>
+                            <hr />
+                        </div>
                     </div>
-                </div>
-        </div>
-    <?php
+            <?php
+                endforeach;
             endforeach;
-    ?>
-    <!-- <div class="row mb-4">
+            ?>
+            <!-- <div class="row mb-4">
                 <div class="col-md-2"></div>
                 <div class="col-md-2">
                     <img src="assets/images/gambar1.jpg" width="270" class="img-fluid img-thumbnail" />
@@ -220,7 +215,7 @@ require_once("config/config.php");
                     <hr />
                 </div>
             </div> -->
-    </div>
+        </div>
     </section>
     <!-- section contact us -->
     <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 400" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
@@ -261,7 +256,7 @@ require_once("config/config.php");
         </defs>
         <path d="M 0,400 C 0,400 0,200 0,200 C 81.93846153846155,207.9153846153846 163.8769230769231,215.83076923076922 246,217 C 328.1230769230769,218.16923076923078 410.4307692307691,212.59230769230774 494,207 C 577.5692307692309,201.40769230769226 662.4,195.79999999999998 731,196 C 799.6,196.20000000000002 851.9692307692306,202.20769230769233 933,214 C 1014.0307692307694,225.79230769230767 1123.7230769230769,243.36923076923077 1213,242 C 1302.2769230769231,240.63076923076923 1371.1384615384616,220.31538461538463 1440,200 C 1440,200 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="url(#gradient)" class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
     </svg>
-    <!-- <section id="contact">
+    <section id="contact">
         <div class="container-fluid align-items-center d-flex flex-column pb-4 bg-secondary bg-opacity-25">
             <h2 class="text-dark fw-bold pb-2 pt-3 text-center">Contact Us</h2>
             <form action="#" method="POST">
@@ -300,52 +295,6 @@ require_once("config/config.php");
                     </center>
                 </fieldset>
             </form>
-        </div>
-    </section> -->
-    <section id="contact">
-        <div class="container-fluid p-4 bg-secondary bg-opacity-25">
-            <h1 class="text-primary text-opacity-100 text-center pb-3">=== Contact Us ===</h1>
-            <div class="row">
-                <div class="col col-lg-2"></div>
-                <div class="col col-lg-7">
-                    <form action="prosescontact.php" method="POST">
-                        <div class="row mb-3">
-                            <label for="staticEmail" class="col-md-3 form-label">Email</label>
-                            <div class="col-md-9">
-                                <input type="email" class="form-control" name="email" id="staticEmail" placeholder="example@gmail.com" />
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="nama" class="col-md-3 form-label">Nama Lengkap</label>
-                            <div class="col-md-9">
-                                <input type="text" name="nama" class="form-control" id="nama" />
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="info" class="col-md-3 form-label">Informasi</label>
-                            <div class="col-md-9">
-                                <select name="informasi" id="informasi" class="form-select">
-                                    <option value="Sharing Artikel">Sharing Artikel</option>
-                                    <option value="Penawaran Kerja">Penawaran Kerja</option>
-                                    <option value="Lain Lain">Lain-lain</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="ket" class="col-md-3 form-label">Keterangan</label>
-                            <div class="col-md-9">
-                                <textarea name="keterangan" id="keterangan" cols="30" rows="5" class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-9 text-center">
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-envelope"></i> Simpan</button>
-                                <button type="reset" class="btn btn-secondary btn-sm"><i class="bi bi-reply"></i> Batal</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </section>
     <!-- footer -->

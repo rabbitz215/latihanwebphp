@@ -1,0 +1,57 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+#container {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+#kiri {
+  display: table-cell;
+  width: 25%;
+  vertical-align: top;
+  background-color: rgb(0, 132, 255);
+}
+
+#kanan {
+  display: table-cell;
+  width: 75%;
+  vertical-align: top;
+  background-color: rgb(189, 189, 189);
+}
+.hori {
+  width: 95%;
+  margin: auto;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+hr.horih {
+  border: 1px dashed black;
+  width: 96%;
+  margin: auto;
+  background-color: transparent;
+}
+hr.hori2 {
+  border: 1px solid;
+  width: 96%;
+  margin: auto;
+  background-color: #128fc8;
+}
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.link {
+  text-decoration: none;
+  color: white;
+}
+.link:hover {
+  color: #128fc8;
+}
